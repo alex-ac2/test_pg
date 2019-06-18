@@ -1,3 +1,3 @@
 # Test-PG
 
-Example lookup script using PG Postgres client module
+Example lookup script using PG and Knex Postgres client module
