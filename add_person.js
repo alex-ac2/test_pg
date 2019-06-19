@@ -1,5 +1,5 @@
 const settings = require("./settings"); // settings.json
-let name;
+
 let personEntry = process.argv.slice(2);
 
 
@@ -14,13 +14,6 @@ if (personEntry === undefined) {
 
   //console.log(name);
 }
-
-
-// var pg = require('knex')({
-//   client: 'pg',
-//   connection: process.env.PG_CONNECTION_STRING,
-//   searchPath: ['knex', 'public'],
-// });
 
 var knex = require('knex')({
   client: 'pg',
@@ -37,7 +30,7 @@ knex('famous_people')
   .insert({first_name: firstNameEntry, last_name: lastNameEntry, birthdate: birthdateEntry})
   .returning('*')
   .then( (row) => {
-    console.log(row);
+    console.log(row, '\n');
     knex('famous_people').select()
     .then( rows => console.log(rows)); 
   });
